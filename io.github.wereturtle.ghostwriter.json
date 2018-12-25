@@ -101,7 +101,6 @@
         {
             "name": "ghostwriter",
             "buildsystem": "qmake",
-            "builddir": "true",
             "build-options":
                 {
                     "env":
