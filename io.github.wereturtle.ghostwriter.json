@@ -1,9 +1,7 @@
 {
     "app-id": "io.github.wereturtle.ghostwriter",
-    "base": "io.qt.qtwebkit.BaseApp",
-    "base-version": "5.11",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.11",
+    "runtime-version": "5.12",
     "sdk": "org.kde.Sdk",
     "command": "ghostwriter",
     "rename-icon": "ghostwriter",
@@ -16,7 +14,8 @@
         "--share=ipc",
         "--share=network",
         "--filesystem=home",
-        "--device=dri"
+        "--device=dri",
+        "--env=QTWEBENGINE_DISABLE_SANDBOX=1"
     ],
     "modules": [
         {
@@ -101,19 +100,13 @@
         {
             "name": "ghostwriter",
             "buildsystem": "qmake",
-            "build-options":
-                {
-                    "env":
-                        {
-                            "QMAKEPATH": "/app/lib"
-                        }
-                },
+            "builddir": "true",
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/wereturtle/ghostwriter.git",
-                    "tag": "v1.7.4",
-                    "commit": "360fabf69e75047fa64aeeac56032044d774418d"
+                    "tag": "v1.8.0",
+                    "commit": "78d7f3a9ea4056342e4a85ebd576ff155c972fba"
                 }
             ]
         }
