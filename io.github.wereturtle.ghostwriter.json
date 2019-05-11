@@ -100,7 +100,7 @@
         {
             "name": "ghostwriter",
             "buildsystem": "qmake",
-            "builddir": "true",
+            "builddir": true,
             "sources": [
                 {
                     "type": "git",
