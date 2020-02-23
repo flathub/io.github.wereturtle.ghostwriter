@@ -105,10 +105,11 @@
                 {
                     "type": "git",
                     "url": "https://github.com/wereturtle/ghostwriter.git",
-                    "tag": "v1.8.0",
-                    "commit": "78d7f3a9ea4056342e4a85ebd576ff155c972fba"
+                    "tag": "v1.8.1",
+                    "commit": "2a33c45c1edf0543ef1c49042f9fdaa219a129ca"
                 }
             ]
         }
     ]
 }
+
