@@ -1,7 +1,9 @@
 {
     "app-id": "io.github.wereturtle.ghostwriter",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.12",
+    "runtime-version": "5.15",
+    "base": "io.qt.qtwebengine.BaseApp",
+    "base-version": "5.15",
     "sdk": "org.kde.Sdk",
     "command": "ghostwriter",
     "rename-icon": "ghostwriter",
@@ -30,7 +32,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/commonmark/cmark.git",
-                    "tag": "0.28.3"
+                    "tag": "0.29.0"
                 }
             ]
         },
@@ -46,7 +48,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/github/cmark.git",
-                    "tag": "0.28.3.gfm.12"
+                    "tag": "0.29.0.gfm.0"
                 }
             ]
         },
@@ -62,22 +64,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/fletcher/MultiMarkdown-6.git",
-                    "tag": "6.3.2"
-                }
-            ]
-        },
-        {
-            "name": "discount",
-            "no-autogen": true,
-            "sources":[
-                {
-                    "type":"archive",
-                    "url": "https://github.com/Orc/discount/archive/v2.2.3a.tar.gz",
-                    "sha256": "40defe460dc005dbc78a4e6174fce29fca2ac3ccd5acd400c05eb713f824df97"
-                },
-                {
-                    "type": "shell",
-                    "commands": ["./configure.sh --prefix=/app"]
+                    "tag": "6.6.0"
                 }
             ]
         },
@@ -99,14 +86,18 @@
         },
         {
             "name": "ghostwriter",
-            "buildsystem": "qmake",
+            "buildsystem": "cmake",
             "builddir": true,
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/wereturtle/ghostwriter.git",
-                    "tag": "v1.8.1",
-                    "commit": "2a33c45c1edf0543ef1c49042f9fdaa219a129ca"
+                    "tag": "2.0.1",
+                    "commit": "02440621ae901103f9f72d7a11d3202cee33076a"
+                },
+                {
+                    "type": "patch",
+                    "path": "appdata.patch"
                 }
             ]
         }
