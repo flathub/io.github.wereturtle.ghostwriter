@@ -1,0 +1,76 @@
+app-id: io.github.wereturtle.ghostwriter
+runtime: org.kde.Platform
+runtime-version: 5.15-21.08
+base: io.qt.qtwebengine.BaseApp
+base-version: 5.15-21.08
+sdk: org.kde.Sdk
+command: ghostwriter
+rename-icon: ghostwriter
+rename-desktop-file: ghostwriter.desktop
+rename-appdata-file: ghostwriter.appdata.xml
+finish-args:
+- "--socket=wayland"
+- "--socket=x11"
+- "--socket=pulseaudio"
+- "--share=ipc"
+- "--share=network"
+- "--filesystem=home"
+- "--device=dri"
+- "--env=QTWEBENGINE_DISABLE_SANDBOX=1"
+modules:
+- name: cmark
+  buildsystem: cmake-ninja
+  builddir: true
+  config-opts:
+  - "-DCMAKE_BUILD_TYPE=Release"
+  - "-DCMAKE_INSTALL_PREFIX=/app"
+  sources:
+  - type: git
+    url: https://github.com/commonmark/cmark.git
+    tag: 0.29.0
+- name: cmark-gfm
+  buildsystem: cmake-ninja
+  builddir: true
+  config-opts:
+  - "-DCMAKE_BUILD_TYPE=Release"
+  - "-DCMAKE_INSTALL_PREFIX=/app"
+  sources:
+  - type: git
+    url: https://github.com/github/cmark.git
+    tag: 0.29.0.gfm.0
+- name: MultiMarkdown
+  buildsystem: cmake-ninja
+  builddir: true
+  config-opts:
+  - "-DCMAKE_BUILD_TYPE=Release"
+  - "-DCMAKE_INSTALL_PREFIX=/app"
+  sources:
+  - type: git
+    url: https://github.com/fletcher/MultiMarkdown-6.git
+    tag: 6.6.0
+- name: Pandoc
+  only-arches:
+  - x86_64
+  buildsystem: simple
+  build-commands:
+  - cp bin/pandoc /app/bin/pandoc
+  - cp bin/pandoc-citeproc /app/bin/pandoc-citeproc
+  sources:
+  - type: archive
+    url: https://github.com/jgm/pandoc/releases/download/2.2.1/pandoc-2.2.1-linux.tar.gz
+    sha256: 3b1b573cdf957b4102c42ce6f5a641787267a55a5e88dcca942fd471c25793cb
+- name: ghostwriter
+  buildsystem: qmake
+  builddir: true
+  build-options:
+    env:
+    - QMAKEPATH=/app/lib
+  config-opts:
+  - QMAKE_INCDIR+=/app/include/QtWebEngine
+  - QMAKE_INCDIR+=/app/include/QtWebEngineCore
+  - QMAKE_INCDIR+=/app/include/QtWebEngineWidgets
+  sources:
+  - type: git
+    url: https://github.com/wereturtle/ghostwriter.git
+    commit: 13e5ab2d86353d74c036c675224f26fd71d0d20c
+
