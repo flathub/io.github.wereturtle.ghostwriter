@@ -72,5 +72,5 @@ modules:
   sources:
   - type: git
     url: https://github.com/wereturtle/ghostwriter.git
-    commit: 13e5ab2d86353d74c036c675224f26fd71d0d20c
+    commit: bdb71a8d8ee8323f1e405b444b445668f8baa588
 
