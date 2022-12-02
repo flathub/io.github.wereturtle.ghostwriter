@@ -1,8 +1,8 @@
 app-id: io.github.wereturtle.ghostwriter
 runtime: org.kde.Platform
-runtime-version: 5.15-21.08
+runtime-version: 5.15-22.08
 base: io.qt.qtwebengine.BaseApp
-base-version: 5.15-21.08
+base-version: 5.15-22.08
 sdk: org.kde.Sdk
 command: ghostwriter
 rename-icon: ghostwriter
@@ -27,17 +27,7 @@ modules:
   sources:
   - type: git
     url: https://github.com/commonmark/cmark.git
-    tag: 0.29.0
-- name: cmark-gfm
-  buildsystem: cmake-ninja
-  builddir: true
-  config-opts:
-  - "-DCMAKE_BUILD_TYPE=Release"
-  - "-DCMAKE_INSTALL_PREFIX=/app"
-  sources:
-  - type: git
-    url: https://github.com/github/cmark.git
-    tag: 0.29.0.gfm.0
+    tag: 0.30.2
 - name: MultiMarkdown
   buildsystem: cmake-ninja
   builddir: true
@@ -54,11 +44,10 @@ modules:
   buildsystem: simple
   build-commands:
   - cp bin/pandoc /app/bin/pandoc
-  - cp bin/pandoc-citeproc /app/bin/pandoc-citeproc
   sources:
   - type: archive
-    url: https://github.com/jgm/pandoc/releases/download/2.2.1/pandoc-2.2.1-linux.tar.gz
-    sha256: 3b1b573cdf957b4102c42ce6f5a641787267a55a5e88dcca942fd471c25793cb
+    url: https://github.com/jgm/pandoc/releases/download/2.19.2/pandoc-2.19.2-linux-amd64.tar.gz
+    sha256: 9d55c7afb6a244e8a615451ed9cb02e6a6f187ad4d169c6d5a123fa74adb4830
 - name: ghostwriter
   buildsystem: qmake
   builddir: true
