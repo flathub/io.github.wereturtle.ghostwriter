@@ -44,11 +44,10 @@ modules:
   buildsystem: simple
   build-commands:
   - cp bin/pandoc /app/bin/pandoc
-  - cp bin/pandoc-citeproc /app/bin/pandoc-citeproc
   sources:
   - type: archive
-    url: https://github.com/jgm/pandoc/releases/download/2.2.1/pandoc-2.2.1-linux.tar.gz
-    sha256: 3b1b573cdf957b4102c42ce6f5a641787267a55a5e88dcca942fd471c25793cb
+    url: https://github.com/jgm/pandoc/releases/download/2.19.2/pandoc-2.19.2-linux-amd64.tar.gz
+    sha256: 9d55c7afb6a244e8a615451ed9cb02e6a6f187ad4d169c6d5a123fa74adb4830
 - name: ghostwriter
   buildsystem: qmake
   builddir: true
