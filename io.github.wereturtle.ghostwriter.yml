@@ -28,16 +28,6 @@ modules:
   - type: git
     url: https://github.com/commonmark/cmark.git
     tag: 0.29.0
-- name: cmark-gfm
-  buildsystem: cmake-ninja
-  builddir: true
-  config-opts:
-  - "-DCMAKE_BUILD_TYPE=Release"
-  - "-DCMAKE_INSTALL_PREFIX=/app"
-  sources:
-  - type: git
-    url: https://github.com/github/cmark.git
-    tag: 0.29.0.gfm.0
 - name: MultiMarkdown
   buildsystem: cmake-ninja
   builddir: true
