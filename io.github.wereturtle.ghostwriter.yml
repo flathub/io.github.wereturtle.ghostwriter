@@ -27,7 +27,7 @@ modules:
   sources:
   - type: git
     url: https://github.com/commonmark/cmark.git
-    tag: 0.29.0
+    tag: 0.30.3
 - name: cmark-gfm
   buildsystem: cmake-ninja
   builddir: true
