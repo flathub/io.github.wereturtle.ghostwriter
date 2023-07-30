@@ -6,8 +6,8 @@ base-version: 5.15-22.08
 sdk: org.kde.Sdk
 command: ghostwriter
 rename-icon: ghostwriter
-rename-desktop-file: ghostwriter.desktop
-rename-appdata-file: ghostwriter.appdata.xml
+rename-desktop-file: org.kde.ghostwriter.desktop
+rename-appdata-file: org.kde.ghostwriter.metainfo.xml
 finish-args:
 - "--socket=wayland"
 - "--socket=x11"
@@ -65,7 +65,7 @@ modules:
     url: https://github.com/jgm/pandoc/releases/download/3.1.6/pandoc-3.1.6-linux-arm64.tar.gz
     sha256: 6ca797f358b0cc04a3b9208ff1975a861bfa7110eafa881aa8c023ac4040e208
 - name: ghostwriter
-  buildsystem: qmake
+  buildsystem: cmake
   builddir: true
   build-options:
     env:
@@ -77,4 +77,4 @@ modules:
   sources:
   - type: git
     url: https://github.com/KDE/ghostwriter.git
-    tag: 2.1.6
+    tag: v23.07.80
