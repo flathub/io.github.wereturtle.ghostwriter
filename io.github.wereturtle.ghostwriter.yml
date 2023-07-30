@@ -1,13 +1,13 @@
 app-id: io.github.wereturtle.ghostwriter
 runtime: org.kde.Platform
-runtime-version: 5.15-21.08
+runtime-version: 5.15-22.08
 base: io.qt.qtwebengine.BaseApp
-base-version: 5.15-21.08
+base-version: 5.15-22.08
 sdk: org.kde.Sdk
 command: ghostwriter
 rename-icon: ghostwriter
-rename-desktop-file: ghostwriter.desktop
-rename-appdata-file: ghostwriter.appdata.xml
+rename-desktop-file: org.kde.ghostwriter.desktop
+rename-appdata-file: org.kde.ghostwriter.metainfo.xml
 finish-args:
 - "--socket=wayland"
 - "--socket=x11"
@@ -27,7 +27,7 @@ modules:
   sources:
   - type: git
     url: https://github.com/commonmark/cmark.git
-    tag: 0.29.0
+    tag: 0.30.3
 - name: cmark-gfm
   buildsystem: cmake-ninja
   builddir: true
@@ -37,7 +37,7 @@ modules:
   sources:
   - type: git
     url: https://github.com/github/cmark.git
-    tag: 0.29.0.gfm.0
+    tag: 0.29.0.gfm.13
 - name: MultiMarkdown
   buildsystem: cmake-ninja
   builddir: true
@@ -47,20 +47,25 @@ modules:
   sources:
   - type: git
     url: https://github.com/fletcher/MultiMarkdown-6.git
-    tag: 6.6.0
+    tag: 6.7.0
 - name: Pandoc
   only-arches:
   - x86_64
   buildsystem: simple
   build-commands:
-  - cp bin/pandoc /app/bin/pandoc
-  - cp bin/pandoc-citeproc /app/bin/pandoc-citeproc
+  - mkdir -p /app/
+  - cp -r bin/ /app/
   sources:
   - type: archive
-    url: https://github.com/jgm/pandoc/releases/download/2.2.1/pandoc-2.2.1-linux.tar.gz
-    sha256: 3b1b573cdf957b4102c42ce6f5a641787267a55a5e88dcca942fd471c25793cb
+    only-arches: ["x86_64"]
+    url: https://github.com/jgm/pandoc/releases/download/3.1.6/pandoc-3.1.6-linux-amd64.tar.gz
+    sha256: 6eec0e0c85e97c90a02b9184c993d4bd848426fb3d7452ddc0d6014368c5e3fd
+  - type: archive
+    only-arches: ["aarch64"]
+    url: https://github.com/jgm/pandoc/releases/download/3.1.6/pandoc-3.1.6-linux-arm64.tar.gz
+    sha256: 6ca797f358b0cc04a3b9208ff1975a861bfa7110eafa881aa8c023ac4040e208
 - name: ghostwriter
-  buildsystem: qmake
+  buildsystem: cmake
   builddir: true
   build-options:
     env:
@@ -71,6 +76,5 @@ modules:
   - QMAKE_INCDIR+=/app/include/QtWebEngineWidgets
   sources:
   - type: git
-    url: https://github.com/wereturtle/ghostwriter.git
-    commit: 151268bcfdca57bba4944caa7172dde9549f0622
-
+    url: https://github.com/KDE/ghostwriter.git
+    tag: v23.07.80
