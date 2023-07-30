@@ -1,8 +1,8 @@
 app-id: io.github.wereturtle.ghostwriter
 runtime: org.kde.Platform
-runtime-version: 5.15-21.08
+runtime-version: 5.15-22.08
 base: io.qt.qtwebengine.BaseApp
-base-version: 5.15-21.08
+base-version: 5.15-22.08
 sdk: org.kde.Sdk
 command: ghostwriter
 rename-icon: ghostwriter
@@ -37,7 +37,7 @@ modules:
   sources:
   - type: git
     url: https://github.com/github/cmark.git
-    tag: 0.29.0.gfm.0
+    tag: 0.29.0.gfm.13
 - name: MultiMarkdown
   buildsystem: cmake-ninja
   builddir: true
@@ -47,7 +47,7 @@ modules:
   sources:
   - type: git
     url: https://github.com/fletcher/MultiMarkdown-6.git
-    tag: 6.6.0
+    tag: 6.7.0
 - name: Pandoc
   only-arches:
   - x86_64
@@ -76,6 +76,5 @@ modules:
   - QMAKE_INCDIR+=/app/include/QtWebEngineWidgets
   sources:
   - type: git
-    url: https://github.com/wereturtle/ghostwriter.git
-    commit: 151268bcfdca57bba4944caa7172dde9549f0622
-
+    url: https://github.com/KDE/ghostwriter.git
+    tag: 2.1.6
