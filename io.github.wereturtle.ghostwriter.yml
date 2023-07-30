@@ -53,12 +53,17 @@ modules:
   - x86_64
   buildsystem: simple
   build-commands:
-  - cp bin/pandoc /app/bin/pandoc
-  - cp bin/pandoc-citeproc /app/bin/pandoc-citeproc
+  - mkdir -p /app/
+  - cp -r bin/ /app/
   sources:
   - type: archive
-    url: https://github.com/jgm/pandoc/releases/download/2.2.1/pandoc-2.2.1-linux.tar.gz
-    sha256: 3b1b573cdf957b4102c42ce6f5a641787267a55a5e88dcca942fd471c25793cb
+    only-arches: ["x86_64"]
+    url: https://github.com/jgm/pandoc/releases/download/3.1.6/pandoc-3.1.6-linux-amd64.tar.gz
+    sha256: 6eec0e0c85e97c90a02b9184c993d4bd848426fb3d7452ddc0d6014368c5e3fd
+  - type: archive
+    only-arches: ["aarch64"]
+    url: https://github.com/jgm/pandoc/releases/download/3.1.6/pandoc-3.1.6-linux-arm64.tar.gz
+    sha256: 6ca797f358b0cc04a3b9208ff1975a861bfa7110eafa881aa8c023ac4040e208
 - name: ghostwriter
   buildsystem: qmake
   builddir: true
