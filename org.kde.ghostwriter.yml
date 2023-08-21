@@ -1,4 +1,4 @@
-app-id: io.github.wereturtle.ghostwriter
+app-id: org.kde.ghostwriter
 runtime: org.kde.Platform
 runtime-version: 5.15-22.08
 base: io.qt.qtwebengine.BaseApp
