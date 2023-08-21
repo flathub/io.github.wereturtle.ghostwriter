@@ -6,8 +6,6 @@ base-version: 5.15-22.08
 sdk: org.kde.Sdk
 command: ghostwriter
 rename-icon: ghostwriter
-rename-desktop-file: org.kde.ghostwriter.desktop
-rename-appdata-file: org.kde.ghostwriter.metainfo.xml
 finish-args:
 - "--socket=wayland"
 - "--socket=x11"
@@ -23,7 +21,6 @@ modules:
   builddir: true
   config-opts:
   - "-DCMAKE_BUILD_TYPE=Release"
-  - "-DCMAKE_INSTALL_PREFIX=/app"
   sources:
   - type: git
     url: https://github.com/commonmark/cmark.git
@@ -33,7 +30,6 @@ modules:
   builddir: true
   config-opts:
   - "-DCMAKE_BUILD_TYPE=Release"
-  - "-DCMAKE_INSTALL_PREFIX=/app"
   sources:
   - type: git
     url: https://github.com/github/cmark.git
@@ -43,14 +39,11 @@ modules:
   builddir: true
   config-opts:
   - "-DCMAKE_BUILD_TYPE=Release"
-  - "-DCMAKE_INSTALL_PREFIX=/app"
   sources:
   - type: git
     url: https://github.com/fletcher/MultiMarkdown-6.git
     tag: 6.7.0
 - name: Pandoc
-  only-arches:
-  - x86_64
   buildsystem: simple
   build-commands:
   - mkdir -p /app/
@@ -67,14 +60,7 @@ modules:
 - name: ghostwriter
   buildsystem: cmake
   builddir: true
-  build-options:
-    env:
-    - QMAKEPATH=/app/lib
-  config-opts:
-  - QMAKE_INCDIR+=/app/include/QtWebEngine
-  - QMAKE_INCDIR+=/app/include/QtWebEngineCore
-  - QMAKE_INCDIR+=/app/include/QtWebEngineWidgets
   sources:
-  - type: git
-    url: https://github.com/KDE/ghostwriter.git
-    tag: v23.07.80
+  - type: archive
+    url: https://download.kde.org/stable/release-service/23.04.3/src/ghostwriter-23.04.3.tar.xz
+    sha256: 37a72eb79946abeeab6e138553074b2bfae7233c7516e922f56e4d2b4d8579e0
